@@ -5,7 +5,6 @@ def main():
     print_hi(name)
     enter_to_do(to_do_list)
 
-
 def print_hi(name):
     return print(f'Hi {name}!')
 
@@ -15,11 +14,15 @@ def first_message():
 
 
 def enter_to_do(to_do_list):
-    print("Please enter a task:")
-    to_do_item = input()
-    to_do_list.add_task(to_do_item)
+    print("Please enter your tasks and enter 'Done' when finished.")
+    while True:
+        print("Task:")
+        to_do_item = input().capitalize()
+        if to_do_item == "Done":
+            break
+        to_do_list.add_task(to_do_item)
+        to_do_list.show_list()
     to_do_list.show_list()
-
 class ToDo:
     def __init__(self):
         self._tasks = ["To-Do List:"]
