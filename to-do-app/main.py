@@ -17,10 +17,12 @@ def primary_user_interaction(to_do_list):
             case 'add':
                 to_do_item = input("Enter a new task: ").capitalize()
                 to_do_list.add_task(to_do_item)
-            case 'show':
+            case 'show' | 'display':
                 to_do_list.show_list()
             case 'exit':
                 break
+            case unknown:
+                print("You entered an unknown command")
 
 
 class ToDo:
