@@ -1,28 +1,28 @@
 def main():
     to_do_list = ToDo()
-    first_message()
-    name = input().capitalize()
-    print_hi(name)
-    enter_to_do(to_do_list)
+    check_in()
+    primary_user_interaction(to_do_list)
 
-def print_hi(name):
+
+def check_in():
+    print("Please enter your name.")
+    name = input().capitalize()
     return print(f'Hi {name}!')
 
 
-def first_message():
-    return print("Please enter your name.")
-
-
-def enter_to_do(to_do_list):
-    print("Please enter your tasks and enter 'Done' when finished.")
+def primary_user_interaction(to_do_list):
     while True:
-        print("Task:")
-        to_do_item = input().capitalize()
-        if to_do_item == "Done":
-            break
-        to_do_list.add_task(to_do_item)
-        to_do_list.show_list()
-    to_do_list.show_list()
+        user_choice = input("Enter 'add', 'show', or 'exit': ")
+        match user_choice:
+            case 'add':
+                to_do_item = input("Enter a new task: ").capitalize()
+                to_do_list.add_task(to_do_item)
+            case 'show':
+                to_do_list.show_list()
+            case 'exit':
+                break
+
+
 class ToDo:
     def __init__(self):
         self._tasks = ["To-Do List:"]
@@ -41,6 +41,7 @@ class ToDo:
                     print(f'-' + item)
                 else:
                     print(item)
+
 
 if __name__ == "__main__":
     main()
