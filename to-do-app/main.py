@@ -12,7 +12,7 @@ def check_in():
 
 def primary_user_interaction(to_do_list):
     while True:
-        user_choice = input("Enter 'add', 'show', 'edit' or 'done': ").capitalize()
+        user_choice = input("Enter 'add', 'show', 'edit' or 'exit': ").capitalize()
         match user_choice:
             case 'Add':
                 to_do_item = input("Enter a new task: ").capitalize()
@@ -26,7 +26,7 @@ def primary_user_interaction(to_do_list):
                     to_do_list.edit_task(to_do_item, item_update)
             case 'Show' | 'Display':
                 to_do_list.show_list()
-            case 'Done':
+            case 'Exit':
                 break
             case unknown:
                 print("You entered an unknown command")
