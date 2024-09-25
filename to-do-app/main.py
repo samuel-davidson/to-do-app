@@ -12,14 +12,21 @@ def check_in():
 
 def primary_user_interaction(to_do_list):
     while True:
-        user_choice = input("Enter 'add', 'show', or 'exit': ").capitalize()
+        user_choice = input("Enter 'add', 'show', 'edit' or 'done': ").capitalize()
         match user_choice:
             case 'Add':
                 to_do_item = input("Enter a new task: ").capitalize()
                 to_do_list.add_task(to_do_item)
+            case 'Edit':
+                to_do_item = input("Enter the task to edit: ").capitalize()
+                if to_do_list.task_in_list(to_do_item) is False:
+                    print('Task not in list')
+                else:
+                    item_update = input("Enter the updated task: ").capitalize()
+                    to_do_list.edit_task(to_do_item, item_update)
             case 'Show' | 'Display':
                 to_do_list.show_list()
-            case 'Exit':
+            case 'Done':
                 break
             case unknown:
                 print("You entered an unknown command")
@@ -32,6 +39,18 @@ class ToDo:
     def add_task(self, task):
         self._tasks.append(task)
         return print(f'You have added "' + task + '" to your To-Do list')
+
+    def task_in_list(self, task):
+        for el in self._tasks:
+            if el == task:
+                return True
+        return False
+
+    def edit_task(self, task, update):
+        for idx, n in enumerate(self._tasks):
+            if n == task:
+                self._tasks[idx] = update
+                return print(f'You have updated "' + update + '" on your To-Do list')
 
     def remove_task(self, task):
         self._tasks.remove(task)
