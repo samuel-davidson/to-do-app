@@ -19,7 +19,7 @@ def primary_user_interaction(to_do_list):
                 to_do_list.add_task(to_do_item)
             case 'Edit':
                 to_do_item = input("Enter the task to edit: ").capitalize()
-                if to_do_list.task_in_list(to_do_item) is False:
+                if to_do_list.contains_task(to_do_item) is False:
                     print('Task not in list')
                 else:
                     item_update = input("Enter the updated task: ").capitalize()
@@ -40,7 +40,7 @@ class ToDo:
         self._tasks.append(task)
         return print(f'You have added "' + task + '" to your To-Do list')
 
-    def task_in_list(self, task):
+    def contains_task(self, task):
         for el in self._tasks:
             if el == task:
                 return True
