@@ -5,6 +5,7 @@ def main():
 
 
 def check_in():
+    #note
     print("Please enter your name.")
     name = input().capitalize()
     return print(f'Hi {name}!')
