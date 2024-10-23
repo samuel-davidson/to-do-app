@@ -47,6 +47,7 @@ def primary_user_interaction(to_do_list):
 
 
 class ToDo:
+    """Houses the To Do list and its functions to modify the list"""
     def __init__(self):
         self._tasks = ["To-Do List:"]
 
