@@ -24,15 +24,7 @@ def primary_user_interaction(to_do_list):
                     ).capitalize()
                 to_do_list.add_task(to_do_item)
             case 'Edit':
-                to_do_item_idx = int(input(
-                    "Enter the task # to edit: "
-                    ))
-                if to_do_list.contains_task(to_do_item_idx) is False:
-                    print('Task not in list')
-                else:
-                    item_update = input(
-                        "Enter the updated task: ").capitalize()
-                    to_do_list.edit_task(to_do_item_idx, item_update)
+                to_do_list.edit_task(to_do_list)
             case 'Show' | 'Display':
                 to_do_list.show_list()
             case 'Exit':
@@ -63,12 +55,20 @@ class ToDo:
         else:
             return True
 
-    def edit_task(self, task_idx, update):
-        task = self._tasks[task_idx]
-        self._tasks[task_idx] = update
-        return print(
-            f'You have updated "{task}" to "{update}" on your To-Do list'
-            )
+    def edit_task(self, list):
+        to_do_item_idx = int(input(
+                    "Enter the task # to edit: "
+                    ))
+        if list.contains_task(to_do_item_idx) is False:
+            return print('Task not in list')
+        else:
+            item_update = input(
+                "Enter the updated task: ").capitalize()
+            task = self._tasks[to_do_item_idx]
+            self._tasks[to_do_item_idx] = item_update
+            return print(
+                f'You have updated "{task}" to "{item_update}" on your To-Do list'
+                )
 
     def remove_task(self, task_idx):
         task = self._tasks[task_idx]
