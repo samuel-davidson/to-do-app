@@ -11,6 +11,12 @@ def check_in():
     return print(f'Hi {name}!')
 
 
+def write_to_txt_file(to_do_list):
+    file = open('todos.txt', 'w')
+    for i in to_do_list._tasks:
+        file.writelines(i + "\n")
+
+
 def primary_user_interaction(to_do_list):
     while True:
         user_choice = input(
@@ -23,6 +29,7 @@ def primary_user_interaction(to_do_list):
                     "Enter a new task: "
                     ).capitalize()
                 to_do_list.add_task(to_do_item)
+                write_to_txt_file(to_do_list)
             case 'Edit':
                 to_do_list.edit_task(to_do_list)
             case 'Show' | 'Display':
